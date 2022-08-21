@@ -9,12 +9,13 @@ export const Signup = () => {
     const {store,actions} = useContext(Context)
     const info = {
         email:Nombre,
-        password:Pass
+        password:Pass,
+        is_active:true
 
     }
     console.log(info)
-    const handleSubmit = () => {
-    actions.register()
+    const handleSubmit = (e) => {
+    actions.register(info)
     }
 
     return <div>
@@ -34,7 +35,7 @@ export const Signup = () => {
       <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
       <label className="form-check-label">Check me out</label>
     </div>
-    <button type="submit" className="btn btn-primary" onSubmit={handleSubmit()}>Submit</button>
+    <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
   </form>
   </div>
 }

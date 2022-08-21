@@ -20,8 +20,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			register: () => {
-				
+			register: (info) => {
+				var myHeaders = new Headers();
+			myHeaders.append("Content-Type", "application/json");
+
+			var raw = JSON.stringify({info
+
+		});
+
+			var requestOptions = {
+			method: 'POST',
+			headers: myHeaders,
+			body: raw,
+			redirect: 'follow'
+			};
+
+			fetch(process.env.BACKEND_URL + "/api/signup", requestOptions)
+			.then(response => response.json())
+			.then(result => console.log(result, response,"fetch funciona"))
+			.catch(error => console.log('error', error));
 			},
 
 			getMessage: async () => {
