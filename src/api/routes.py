@@ -6,6 +6,7 @@ from api.models import db, User
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
 
+
 api = Blueprint('api', __name__)
 
 
@@ -17,3 +18,7 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@api.route('/signup', methods=['POST'])
+def handle_register():
+    request_body = jsonify()
