@@ -5,12 +5,12 @@ import "../../styles/home.css";
 export const Login = () => {
 
 const { store, actions } = useContext(Context);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [Nombre, setNombre] = useState("");
+  const [Pass, setPass] = useState("");
+
 
   
-  const handleClick = () => {
+  const handleSubmit = () => {
     actions.login(email, password);
     //.then(() => {});
   };
@@ -32,7 +32,7 @@ const { store, actions } = useContext(Context);
   <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
   <label className="form-check-label">Check me out</label>
 </div>
-<button className="btn btn-primary">Submit</button>
+<button className="btn btn-primary" onClick={handleSubmit}>Submit</button>
 </form>
 </div>
 }

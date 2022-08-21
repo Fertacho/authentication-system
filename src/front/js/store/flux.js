@@ -35,7 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			redirect: 'follow'
 			};
 
-			fetch("https://3001-fertacho-authentication-k0w3e6phqia.ws-us62.gitpod.io/?vscodeBrowserReqId=1661110080426/api/signup", requestOptions)
+			fetch("https://3001-fertacho-authentication-k0w3e6phqia.ws-us62.gitpod.io/?vscodeBrowserReqId=1661115181357/api/signup", requestOptions)
 			.then(response => response.json())
 			.then(result => console.log(result, response,"fetch funciona"))
 			.catch(error => console.log('error', error));

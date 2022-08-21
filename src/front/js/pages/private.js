@@ -1,10 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Context } from "../store/appContext";
-import "../../styles/home.css";
-
+import { Navigate, Outlet } from "react-router-dom";
+import React from "react";
+import { Dash } from "./dash";
 
 export const Private = () => {
-    return <div>
-        <h1>Hola, si ves esto, significa que estás verificado como usuario</h1>
-    </div>
-}
+     
+      return(
+        sessionStorage.getItem("token")? <Outlet/> : <Navigate to="/dash"/>
+
+      )  
+
+  
+};

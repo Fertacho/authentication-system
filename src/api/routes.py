@@ -5,10 +5,11 @@ import os
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
-from flask_jwt_extended import JWTManager, create_access_token, get_jwt_identity, jwt_required
+from flask_jwt_extended import get_jwt_identity, jwt_required
 
 
 api = Blueprint('api', __name__)
+
 
 
 @api.route('/hello', methods=['POST', 'GET'])
@@ -31,10 +32,10 @@ def handle_register():
     db.session.commit()
     return jsonify({"message":"texto"})
 
-@api.route("/token", methods=["POST"])
+@api.route("/token", methods=["POST", "GET"])
 def create_token():
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
+    email = request.json.get("email")
+    password = request.json.get("password")
     if email != "hola@hola.com" or password != "holala":
         return jsonify({"msg": "Bad username or password"}), 401
 
