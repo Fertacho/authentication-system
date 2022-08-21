@@ -3,6 +3,18 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
 export const Login = () => {
+
+const { store, actions } = useContext(Context);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  
+  const handleClick = () => {
+    actions.login(email, password);
+    //.then(() => {});
+  };
+
     return <div>
     <h1>Inicio de sesión</h1><form>
 <div className="mb-3">
@@ -20,7 +32,7 @@ export const Login = () => {
   <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
   <label className="form-check-label">Check me out</label>
 </div>
-<button type="submit" className="btn btn-primary">Submit</button>
+<button className="btn btn-primary">Submit</button>
 </form>
 </div>
 }

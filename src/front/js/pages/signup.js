@@ -19,7 +19,7 @@ export const Signup = () => {
     }
 
     return <div>
-        <h1>Registro</h1><form>
+        <h1>Registro</h1>
     <div className="mb-3">
       <label className="form-label">Email address</label>
       <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
@@ -31,11 +31,6 @@ export const Signup = () => {
       <input type="password" className="form-control" id="exampleInputPassword1"
       onChange={(e) => {setPass(e.target.value);}}/>
     </div>
-    <div className="mb-3 form-check">
-      <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-      <label className="form-check-label">Check me out</label>
-    </div>
-    <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Submit</button>
-  </form>
+    <button className="btn btn-primary" onClick={handleSubmit}>Submit</button>
   </div>
 }

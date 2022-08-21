@@ -30,3 +30,13 @@ def handle_register():
     db.session.add(new_user)
     db.session.commit()
     return jsonify({"message":"texto"})
+
+@api.route("/token", methods=["POST"])
+def create_token():
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+    if email != "hola@hola.com" or password != "holala":
+        return jsonify({"msg": "Bad username or password"}), 401
+
+    access_token = create_access_token(identity=email)
+    return jsonify(access_token=  access_token)
