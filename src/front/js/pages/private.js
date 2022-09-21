@@ -14,11 +14,7 @@ export const Private = () => {
 
 	return (
 		<div >
-			<h1>Welcome to the private link</h1>
-			<p>Please don't <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">click here</a> ... You will be out of this website if you do so...</p>
-			 		
-
-		
+			<h1>This is the private page</h1>
 		</div>
 	);
 };
