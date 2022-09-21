@@ -1,36 +1,61 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
-import "../../styles/home.css";
+import { useContext } from "react";
+import { useEffect } from "react";
 
-export const Signup = () => {
+function Signup() {
 
-    const [Nombre, setNombre] = useState("");
-    const [Pass, setPass] = useState("");
-    const {store,actions} = useContext(Context)
-    const info = {
-        email:Nombre,
-        password:Pass,
-        is_active:true
+  const { store, actions } = useContext(Context);
+  const navigate =useNavigate()
+  useEffect(() => {
 
-    }
-    console.log(info)
-    const handleSubmit = (e) => {
-    actions.register(info)
-    }
+  }, [])
 
-    return <div>
-        <h1>Registro</h1>
-    <div className="mb-3">
-      <label className="form-label">Email address</label>
-      <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
-      onChange={(e) => {setNombre(e.target.value);}}/>
-      <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
-    </div>
-    <div className="mb-3">
-      <label className="form-label">Password</label>
-      <input type="password" className="form-control" id="exampleInputPassword1"
-      onChange={(e) => {setPass(e.target.value);}}/>
-    </div>
-    <button className="btn btn-primary" onClick={handleSubmit}>Submit</button>
-  </div>
+  useEffect(() => {
+      if(store.currentUser !== null) navigate('/');
+  }, [store])
+
+ 
+
+  return (
+    <form onSubmit={(e) =>  actions.handleRegister(e,navigate)} >
+      <div className="form-group">
+        <label htmlFor="exampleInputEmail1">Email address</label>
+        <input
+          type="text"
+          className="form-control w-50"
+          id="email" 
+          name="email"
+          aria-describedby="emailHelp"
+          placeholder="Email"
+          value={store.email}
+          onChange={actions.handleChange} 
+        />
+        <small id="emailHelp" className="form-text text-muted">
+          We'll never share your email with anyone else.
+        </small>
+      </div>
+      <div className="form-group">
+        <label htmlFor="exampleInputPassword1">Password</label>
+        <input
+          type="text"
+          className="form-control w-50"
+          id="password" 
+          name="password"
+          placeholder="Password"
+          value={store.password}
+          onChange={actions.handleChange} 
+        />
+      </div>
+
+      <button 
+  
+      type="submit" className="btn btn-primary mt-2">
+        Create User
+      </button>
+    </form>
+  );
 }
+
+export default Signup;
